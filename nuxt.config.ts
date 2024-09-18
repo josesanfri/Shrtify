@@ -1,9 +1,3 @@
-// https://nuxt.com/docs/api/configuration/nuxt-config
-import { fileURLToPath } from 'url'
-import { dirname, join } from 'path'
-
-const currentDir = dirname(fileURLToPath(import.meta.url))
-
 export default defineNuxtConfig({
 	compatibilityDate: '2024-04-03',
 	devtools: { enabled: false },
@@ -51,16 +45,6 @@ export default defineNuxtConfig({
 	nitro: {
 		externals: {
 			inline: ['geoip-lite']
-		}
-	},
-	hooks: {
-		'nitro:config': (nitroConfig) => {
-			if (nitroConfig.dev) return
-				nitroConfig.publicAssets = nitroConfig.publicAssets || []
-				nitroConfig.publicAssets.push({
-				dir: join(currentDir, 'node_modules/geoip-lite/data'),
-				maxAge: 60 * 60 * 24 * 365 // 1 year
-			})
 		}
 	}
 })
