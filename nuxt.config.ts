@@ -29,12 +29,6 @@ export default defineNuxtConfig({
 		}
 	},
 
-	nitro: {
-		externals: {
-			inline: ['geoip-lite']
-		}
-	},
-
 	modules: [
 		'@nuxtjs/tailwindcss',
 		'@nuxtjs/supabase'
@@ -47,6 +41,21 @@ export default defineNuxtConfig({
 			login: '/auth',
 			callback: '/confirm',
 			exclude: ['/']
+		}
+	},
+	nitro: {
+		externals: {
+		  inline: ['geoip-lite']
+		}
+	},
+	hooks: {
+		'nitro:config': (nitroConfig) => {
+			if (nitroConfig.dev) return
+				nitroConfig.serverAssets = nitroConfig.serverAssets || []
+				nitroConfig.serverAssets.push({
+				baseName: 'geoip-data',
+				dir: './node_modules/geoip-lite/data'
+			})
 		}
 	}
 })
