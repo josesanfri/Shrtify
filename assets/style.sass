@@ -3,4 +3,22 @@
 @tailwind utilities
 
 body
-    @apply bg-black text-white
+    @apply bg-black text-white/70 relative
+
+.container
+    @apply max-w-5xl mx-auto px-5
+
+.card
+    @apply min-w-[350px] bg-white/5 rounded-xl p-5 border border-white/10 backdrop-blur-md
+
+.btn-primary
+    @apply bg-cyan-500 hover:bg-cyan-700 text-white
+
+.input-primary
+    @apply w-full py-2 px-2 bg-transparent border-2 border-white/10 rounded-lg mb-2
+
+.form-label
+    @apply text-white/70 text-sm my-1 block
+
+.form-group
+    @apply mb-5
