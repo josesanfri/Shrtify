@@ -76,7 +76,7 @@ const handleGithubLogin = async () => {
 						</svg>
 					</div>
 				</article>
-				<button class="btn-primary py-3 px-4 w-full my-5" @click="handleGithubLogin()">
+				<button class="btn-primary rounded-full py-3 px-4 w-full my-5" @click="handleGithubLogin()">
 					Continuar con Github
 				</button>
 				<hr class="border-white/10">
@@ -92,13 +92,13 @@ const handleGithubLogin = async () => {
 					</div>
 					<button type="submit" class="btn-primary rounded-full py-3 w-full">
 						<template v-if="isLoginUser">
-							Login
+							Entrar
 						</template>
 						<template v-else>
 							Registrar
 						</template>
 					</button>
-					<button type="button" @click="isLoginUser = !isLoginUser">
+					<button class="mt-2" type="button" @click="isLoginUser = !isLoginUser">
 						<template v-if="isLoginUser">
 							Todavia no tienes cuenta? Registrate
 						</template>

@@ -49,7 +49,7 @@ console.log({ data });
 
         <!--Lista Urls acortadas-->
         <article class="container mt-10">
-            <LinkItem 
+            <LinkItem
                 v-for="link in data"
                 :key="link.id"
                 :link="{
