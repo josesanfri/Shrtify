@@ -40,15 +40,17 @@ onMounted(() => {
 </script>
 
 <template>
-    <form @submit.prevent="handleLinkForm">
-        <section>
-            <label for="url">Long URL</label>
-            <input type="text" id="url" v-model="formURL.long_url">
+    <form class="flex flex-col md:flex-row gap-4 items-center" @submit.prevent="handleLinkForm">
+        <section class="w-full md:w-5/12">
+            <label class="form-label" for="url">Long URL</label>
+            <input class="input-primary" type="text" id="url" v-model="formURL.long_url">
         </section>
-        <section>
-            <label for="shortUrl">ShortKey</label>
-            <input type="text" id="shortUrl" v-model="formURL.key"/>
+        <section class="w-full md:w-5/12">
+            <label class="form-label" for="shortUrl">ShortKey</label>
+            <input class="input-primary" type="text" id="shortUrl" v-model="formURL.key"/>
         </section>
-        <button>Short</button>
+        <section class="w-full md:w-2/12">
+            <button type="submit" class="btn-primary py-3 mt-3 rounded-full font-bold w-full">Acortar</button>
+        </section>
     </form>
 </template>

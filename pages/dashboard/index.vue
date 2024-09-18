@@ -29,25 +29,25 @@ const { data, refresh } = await useAsyncData('links', async () => {
 
     return data;
 });
-
-console.log({ data });
 </script>
 
 <template>
-    <section>
+    <section class="pt-24">
         <!--Titulo-->
-        <article>
-            <h1>Dashboard</h1>
+        <article class="container">
+            <h1 class="text-2xl font-bold text-white">Dashboard</h1>
         </article>
 
         <!--Acortador-->
-        <article>
-            <LinkForm @created="refresh"/>
+        <article class="container mt-10">
+            <div class="card">
+                <LinkForm @created="refresh"/>
+            </div>
         </article>
 
         <!--Lista Urls acortadas-->
-        <article>
-            <LinkItem 
+        <article class="container mt-10">
+            <LinkItem
                 v-for="link in data"
                 :key="link.id"
                 :link="{

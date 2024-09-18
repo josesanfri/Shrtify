@@ -1,5 +1,6 @@
 <script lang="ts" setup>
 import type { Database } from '~/database.types';
+import geoip from 'geoip-lite';
 
 const params = useRoute().params;
 const supabase = useSupabaseClient<Database>();
@@ -29,6 +30,19 @@ const { data } = await useAsyncData("link", async () => {
 });
 
 if(data.value?.long_url){
+    const ua = useUserAgent();
+    if(ua && ua.ip){
+        const geoLocation = geoip.lookup(ua.ip);
+
+        const { data: res, error } = await supabase.from('clicks').insert({
+            link_id: data.value.id,
+            ip: ua.ip,
+            country: geoLocation?.country,
+            city: geoLocation?.city,
+            user_agent: ua.userAgent,
+        })
+    }
+
     useExternalRedirect(data.value?.long_url);
 }
 </script>
