@@ -42,5 +42,20 @@ export default defineNuxtConfig({
 			callback: '/confirm',
 			exclude: ['/']
 		}
+	},
+	nitro: {
+		externals: {
+		  inline: ['geoip-lite']
+		}
+	},
+	hooks: {
+		'nitro:config': (nitroConfig) => {
+			if (nitroConfig.dev) return
+				nitroConfig.serverAssets = nitroConfig.serverAssets || []
+				nitroConfig.serverAssets.push({
+				baseName: 'geoip-data',
+				dir: './node_modules/geoip-lite/data'
+			})
+		}
 	}
 })

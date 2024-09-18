@@ -1,6 +1,7 @@
 <script lang="ts" setup>
 import type { Database } from '~/database.types';
 import geoip from 'geoip-lite';
+import { lookup } from 'geoip-lite';
 
 const params = useRoute().params;
 const supabase = useSupabaseClient<Database>();
