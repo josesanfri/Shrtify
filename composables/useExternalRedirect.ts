@@ -1,23 +1,22 @@
-import { sendRedirect } from "h3";
+import { sendRedirect } from 'h3';
 
-export default function useExernalRedirect(url:string, code:number = 302): Promise<void>{
-    // Check url is valid
-    if(/^(https?:\/\/)/.test(url)){
-        //Check if is SSR
-        if(process.server){
-            const nuxtApp = useNuxtApp();
-
-            if(nuxtApp.ssrContext && nuxtApp.ssrContext.event){
-                return nuxtApp.callHook("app:redirected").then(() =>{
-                    if(nuxtApp.ssrContext && nuxtApp.ssrContext.event){
-                        return sendRedirect(nuxtApp.ssrContext.event, url, code);
-                    }
-                })
-            }
-        } else {
-            window.location.href = url;
-        }
+export default async function useExternalRedirect(url: string, code: number = 302): Promise<void> {
+    // Check if URL is valid
+    if (!/^(https?:\/\/)/.test(url)) {
+        throw new Error('Invalid URL');
     }
 
-    throw new Error('invalid url');
+    // Check if on server side (SSR)
+    if (process.server) {
+        const nuxtApp = useNuxtApp();
+
+        if (nuxtApp.ssrContext && nuxtApp.ssrContext.event) {
+            // Ensure that the hook call and redirect are correctly handled
+            await nuxtApp.callHook('app:redirected');
+            await sendRedirect(nuxtApp.ssrContext.event, url, code);
+        }
+    } else {
+        // Client-side redirection
+        window.location.href = url;
+    }
 }

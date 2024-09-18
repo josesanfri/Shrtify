@@ -5,12 +5,12 @@ import geoip from 'geoip-lite';
 const params = useRoute().params;
 const supabase = useSupabaseClient<Database>();
 
-if(!params.id){
+if (!params.id) {
     throw createError({
         statusCode: 400,
         message: "Not found"
     });
-};
+}
 
 const { data } = await useAsyncData("link", async () => {
     const { data, error } = await supabase
@@ -19,7 +19,7 @@ const { data } = await useAsyncData("link", async () => {
         .eq("key", params.id)
         .single();
 
-    if(error){
+    if (error) {
         throw createError({
             statusCode: 400,
             message: "Not found"
@@ -29,18 +29,22 @@ const { data } = await useAsyncData("link", async () => {
     return data;
 });
 
-if(data.value?.long_url){
+if (data.value?.long_url) {
     const ua = useUserAgent();
-    if(ua && ua.ip){
+    if (ua && ua.ip) {
         const geoLocation = geoip.lookup(ua.ip);
 
         const { data: res, error } = await supabase.from('clicks').insert({
             link_id: data.value.id,
             ip: ua.ip,
-            country: geoLocation?.country,
-            city: geoLocation?.city,
+            country: geoLocation?.country || 'Unknown',
+            city: geoLocation?.city || 'Unknown',
             user_agent: ua.userAgent,
-        })
+        });
+
+        if (error) {
+            console.error('Error inserting click data:', error);
+        }
     }
 
     useExternalRedirect(data.value?.long_url);
