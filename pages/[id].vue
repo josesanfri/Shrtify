@@ -1,7 +1,6 @@
 <script lang="ts" setup>
 import type { Database } from '~/database.types';
-import geoip from 'geoip-lite';
-import { lookup } from 'geoip-lite';
+import axios from 'axios';
 
 const params = useRoute().params;
 const supabase = useSupabaseClient<Database>();
@@ -33,18 +32,25 @@ const { data } = await useAsyncData("link", async () => {
 if (data.value?.long_url) {
     const ua = useUserAgent();
     if (ua && ua.ip) {
-        const geoLocation = geoip.lookup(ua.ip);
+        try {
+            // Hacer la solicitud a la API de ipinfo para obtener la ubicación geográfica
+            const response = await axios.get(`https://ipinfo.io/${ua.ip}?token=${process.env.IPINFO_TOKEN}`);
 
-        const { data: res, error } = await supabase.from('clicks').insert({
-            link_id: data.value.id,
-            ip: ua.ip,
-            country: geoLocation?.country || 'Unknown',
-            city: geoLocation?.city || 'Unknown',
-            user_agent: ua.userAgent,
-        });
+            const geoLocation = response.data; // Datos de geolocalización devueltos por ipinfo
 
-        if (error) {
-            console.error('Error inserting click data:', error);
+            const { data: res, error } = await supabase.from('clicks').insert({
+                link_id: data.value.id,
+                ip: ua.ip,
+                country: geoLocation.country || 'Unknown',
+                city: geoLocation.city || 'Unknown',
+                user_agent: ua.userAgent,
+            });
+
+            if (error) {
+                console.error('Error inserting click data:', error);
+            }
+        } catch (error) {
+            console.error('Error fetching geolocation from ipinfo:', error);
         }
     }
 

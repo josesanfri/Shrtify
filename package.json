@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "@nuxtjs/supabase": "^1.4.0",
-    "geoip-lite": "^1.4.10",
+    "axios": "^1.7.7",
     "nanoid": "^5.0.7",
     "nuxt": "^3.13.0",
     "vue": "latest",
