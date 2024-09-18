@@ -29,6 +29,12 @@ export default defineNuxtConfig({
 		}
 	},
 
+	nitro: {
+		externals: {
+			inline: ['geoip-lite']
+		}
+	},
+
 	modules: [
 		'@nuxtjs/tailwindcss',
 		'@nuxtjs/supabase'
