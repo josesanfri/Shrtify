@@ -15,7 +15,7 @@ const handleCopy = () => {
 </script>
 
 <template>
-    <section class="card flex justify-between mt-5">
+    <section class="card flex justify-between mt-2.5 mb-2.5">
         <article class="link-info">
             <NuxtLink :to="`/dashboard/${link.shortkey}`" class="text-cyan-500 font-bold text-2xl">/{{ link.shortkey }}</NuxtLink>
             <p class="text-sm text-white/40">{{ link.longUrl.slice(0, 20) + "..." }}</p>

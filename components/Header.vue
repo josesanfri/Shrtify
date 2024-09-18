@@ -10,7 +10,7 @@ const logout = async () => {
 </script>
 
 <template>
-	<header class="fixed top-0 left-0 right-0 border-b border-white/20">
+	<header class="fixed top-0 left-0 right-0 border-b border-white/20 backdrop-blur-md z-10">
         <nav class="container py-4 flex justify-between">
 			<NuxtLink
 				:to="{
