@@ -29,8 +29,6 @@ const { data, refresh } = await useAsyncData('links', async () => {
 
     return data;
 });
-
-console.log({ data });
 </script>
 
 <template>

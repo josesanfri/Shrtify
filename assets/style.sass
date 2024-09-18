@@ -2,8 +2,18 @@
 @tailwind components
 @tailwind utilities
 
+
+body, html
+    @apply w-screen
+    min-height: 100vh
+    overflow-x: clip
+    text-rendering: optimizeLegibility
+    -webkit-font-smoothing: antialiased
+
 body
-    @apply bg-black text-white/70 relative
+    @apply bg-black text-white/70 relative cursor-default overflow-x-hidden w-screen
+    scroll-behavior: smooth
+    font-family: system-ui
 
 .container
     @apply max-w-5xl mx-auto px-5

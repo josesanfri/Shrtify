@@ -41,11 +41,6 @@ if(data.value?.long_url){
             city: geoLocation?.city,
             user_agent: ua.userAgent,
         })
-
-        if(error){
-            console.log({error});
-        }
-        console.log({res});
     }
 
     useExternalRedirect(data.value?.long_url);

@@ -12,12 +12,12 @@ const { data } = useAsyncData(id.toString(), async () => {
         .eq('key', id)
         .single();
 
-        if(error){
-            throw createError({
-                statusCode: 400,
-                message: "Not found"
-            });
-        }
+    if(error){
+        throw createError({
+            statusCode: 400,
+            message: "Not found"
+        });
+    }
     
     const totalClicks = res.clicks.length;
 
@@ -35,7 +35,7 @@ const { data } = useAsyncData(id.toString(), async () => {
                 {{ data.key }}
             </h1>
             <p class="mt-5">{{ data.created_at }}</p>
-            <section class="mt-5 flex gap-5">
+            <section class="mt-5 flex flex-col md:flex-row gap-5">
                 <div class="card">
                     <article class="text-2xl text-white/40 overflow-x-auto" texteditable>
                         {{ data.long_url }}
@@ -54,14 +54,14 @@ const { data } = useAsyncData(id.toString(), async () => {
             <h2 class="text-2xl">Historial de clicks</h2>
             <section v-for="click in data.clicks" :key="click.id" class="card mt-5">
                 <div v-if="click && typeof click === 'object'">
-                    <section class="flex justify-between items-center">
+                    <section class="flex flex-col md:flex-row justify-between items-start md:items-center">
                         <div>
                             <p v-if="click.ip" class="text-cyan-500 text-lg font-bold">{{ click.ip }}</p>
                             <p>{{ click.created_at }}</p>
                         </div>
                         <div>
-                            <p>Valenvia{{ click.country }}</p>
-                            <p>España{{ click.city }}</p>
+                            <p>{{ click.country }}</p>
+                            <p>{{ click.city }}</p>
                         </div>
                     </section>
                 </div>

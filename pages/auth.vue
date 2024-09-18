@@ -49,7 +49,6 @@ const signUp = async () => {
 			errors.value = error.message;
 			return;
 		}
-		console.log({data})
 		errors.value = "";
 
 		return navigateTo('/confirm');
@@ -95,15 +94,15 @@ const handleGithubLogin = async () => {
 							Entrar
 						</template>
 						<template v-else>
-							Registrar
+							Registrarme
 						</template>
 					</button>
 					<button class="mt-2" type="button" @click="isLoginUser = !isLoginUser">
 						<template v-if="isLoginUser">
-							Todavia no tienes cuenta? Registrate
+							Todavía no tienes cuenta? Regístrate
 						</template>
 						<template v-else>
-							Ya tienes cuenta? Entra
+							¿Ya tienes cuenta? Entra
 						</template>
 					</button>
 				</form>

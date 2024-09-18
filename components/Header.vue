@@ -7,34 +7,6 @@ const logout = async () => {
 	let { error } = await supabase.auth.signOut();
 	error ? alert('error logout') : useRouter().push({name: "index"})
 }
-/*const supabase = useSupabaseClient();
-const user = ref<User | null>(null); // Declara el tipo de 'user' como 'User | null'
-
-// Función para obtener el usuario autenticado
-const fetchUser = async () => {
-  const { data, error } = await supabase.auth.getUser();
-  if (data?.user) {
-    user.value = data.user;
-  } else {
-    console.error('Error al obtener usuario:', error);
-  }
-};
-
-// Llamamos a fetchUser al montar el componente
-onMounted(() => {
-  fetchUser();
-});
-
-// Función de logout
-const logout = async () => {
-  let { error } = await supabase.auth.signOut();
-  if (error) {
-    alert('error logout');
-  } else {
-    user.value = null; // Limpiamos el estado del usuario después de cerrar sesión
-    useRouter().push({ name: 'index' });
-  }
-};*/
 </script>
 
 <template>
