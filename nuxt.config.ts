@@ -42,9 +42,4 @@ export default defineNuxtConfig({
 			exclude: ['/']
 		}
 	},
-	nitro: {
-		externals: {
-			inline: ['geoip-lite']
-		}
-	}
 })

@@ -7,12 +7,11 @@
     "dev": "nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
-    "postinstall": "nuxt prepare",
-    "vercel-build": "node node_modules/geoip-lite/scripts/updatedb.js && nuxt build"
+    "postinstall": "nuxt prepare"
   },
   "dependencies": {
     "@nuxtjs/supabase": "^1.4.0",
-    "geoip-lite": "^1.4.10",
+    "axios": "^1.7.7",
     "nanoid": "^5.0.7",
     "nuxt": "^3.13.0",
     "vue": "latest",
