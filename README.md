@@ -1,75 +1,42 @@
-# Nuxt 3 Minimal Starter
+# **Table of Contents**
+  
+ * [Modules](#modules)
+ * [Description](#description)
+ * [Usage](#usage)
 
-Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+# Modules
 
-## Setup
+- URL Shortener.
+- Nuxt 3 Frontend.
+- Supabase.
+- Tailwind CSS.
 
-Make sure to install the dependencies:
+# Description
 
-```bash
-# npm
-npm install
+>This project is a URL shortener developed with Nuxt3, Supabase and TailwindCSS.
 
-# pnpm
-pnpm install
+>It uses Nuxt3 for building the frontend with a modern and performance optimized approach, Supabase as a backend to manage the database of shortened links and click statistics, and TailwindCSS to design a clean and responsive user interface.
 
-# yarn
-yarn install
+>The system allows users to create short links and track usage statistics, offering a fast and easy-to-use solution for sharing URLs across multiple platforms.
 
-# bun
-bun install
-```
+# Usage
 
-## Development Server
+- Frontend Steps
+   - Recommended node 18 LTS onwards
+   - I use NPM
+      
+   - Install modules to run proyect
 
-Start the development server on `http://localhost:3000`:
+      ```bash
+        npm install
+      ```
+      
+   - Start server on http://localhost:3000
 
-```bash
-# npm
-npm run dev
-
-# pnpm
-pnpm run dev
-
-# yarn
-yarn dev
-
-# bun
-bun run dev
-```
-
-## Production
-
-Build the application for production:
-
-```bash
-# npm
-npm run build
-
-# pnpm
-pnpm run build
-
-# yarn
-yarn build
-
-# bun
-bun run build
-```
-
-Locally preview production build:
-
-```bash
-# npm
-npm run preview
-
-# pnpm
-pnpm run preview
-
-# yarn
-yarn preview
-
-# bun
-bun run preview
-```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+      ```bash
+        npm run dev
+      ```
+- Backend Steps
+  - Create a supabase project
+  - Create the tables
+  - Link your project to the frontend
