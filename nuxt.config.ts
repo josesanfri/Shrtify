@@ -7,7 +7,7 @@ export default defineNuxtConfig({
 		head: {
 			title: "Shrtify",
 			htmlAttrs: {
-				lang: "es",
+				lang: "en",
 			},
 			meta: [
 				{ charset: "utf-8" },
@@ -28,10 +28,7 @@ export default defineNuxtConfig({
 		}
 	},
 
-	modules: [
-		'@nuxtjs/tailwindcss',
-		'@nuxtjs/supabase'
-	],
+	modules: ['@nuxtjs/tailwindcss', '@nuxtjs/supabase', "nuxt-lucide-icons"],
 
 	supabase: {
 		url: process.env.SUPABASE_URL,

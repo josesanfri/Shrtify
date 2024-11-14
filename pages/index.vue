@@ -6,12 +6,22 @@ const user = useSupabaseUser();
     <section class="h-screen grid place-content-center">
         <article class="max-w-3xl mx-auto text-center">
             <h1 class="text-5xl font-bold">
-                Haz tus links más cortos y fáciles de compartir con Shrtify
+                Improve your link management with Shrtify
             </h1>
-            <p class="my-10 text-lg w-10/12 md:w-2/3 mx-auto">
-                Transforma tus largas y molestas URLs en unas más cortas y cómodas con la ayuda de Shrtify
+            <p class="mt-4 text-lg mx-auto">
+                Shrtify transforms your links for better management and easy sharing.
             </p>
-            <NuxtLink class="btn-primary rounded-full font-bold py-2 px-4" :to="user ? '/dashboard' : '/auth'">¡Acorta ahora!</NuxtLink>
+            <p class="mb-5 text-lg mx-auto">
+                Create your links quickly, easily and securely.
+            </p>
+            <div class="flex sm:flex-row items-center justify-center gap-4">
+                <NuxtLink class="btn-primary rounded-full font-bold py-2 px-4" :to="user ? '/dashboard' : '/auth'">
+                    Create a link
+                </NuxtLink>
+                <a class="btn-primary rounded-full font-bold py-2 px-4" href="'https://github.com/josesanfri/Shrtify'">
+                    Star on GitHub
+                </a>
+            </div>
         </article>
     </section>
 </template>
