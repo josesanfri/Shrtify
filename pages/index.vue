@@ -3,7 +3,7 @@ const user = useSupabaseUser();
 </script>
 
 <template>
-    <section class="h-screen grid place-content-center">
+    <section class="min-h-[70vh] md:min-h-[90vh] grid place-content-center px-8">
         <article class="max-w-3xl mx-auto text-center">
             <h1 class="text-5xl font-bold">
                 Improve your link management with Shrtify
@@ -18,7 +18,7 @@ const user = useSupabaseUser();
                 <NuxtLink class="btn-primary rounded-full font-bold py-2 px-4" :to="user ? '/dashboard' : '/auth'">
                     Create a link
                 </NuxtLink>
-                <a class="btn-primary rounded-full font-bold py-2 px-4" href="'https://github.com/josesanfri/Shrtify'">
+                <a class="btn-primary font-bold" href="'https://github.com/josesanfri/Shrtify'">
                     Star on GitHub
                 </a>
             </div>

@@ -5,6 +5,8 @@ const supabase = useSupabaseClient();
 const user = useSupabaseUser();
 const isDropdownOpen = ref(false);
 
+console.log(user);
+
 const toggleDropdown = () => {
 	isDropdownOpen.value = !isDropdownOpen.value;
 }
@@ -23,7 +25,9 @@ const logout = async () => {
 					<span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Shrtify</span>
 				</NuxtLink>
 				<article class="flex items-center md:order-2 gap-4 relative">
-					<LucideGithub class="h-6 w-6 rounded-full"/>
+					<a href="https://github.com/josesanfri/Shrtify" aria-label="GitHub Repository" target="_blank">
+						<LucideGithub class="h-6 w-6 rounded-full"/>
+					</a>
 					<NuxtLink v-if="!user" to="/auth.vue" class="btn-primary flex flex-row items-center gap-2">
 						<LucideArrowRight class="w-4 h-4" />
 						Get Started
