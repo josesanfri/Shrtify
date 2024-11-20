@@ -8,53 +8,53 @@ definePageMeta({
 const supabase = useSupabaseClient<Database>();
 const user = useSupabaseUser();
 
-
-const { data, refresh } = await useAsyncData('links', async () => {
+const { data: links, refresh } = await useAsyncData('links', async () => {
     if (!user.value?.id) {
-        console.error('User ID is missing');
+        console.error('El ID del usuario no está disponible');
         return [];
     }
 
-    const userId = user.value.id as string; // Asume que es una cadena UUID
+    const userId = user.value.id;
 
     const { data, error } = await supabase
         .from('links')
         .select('*')
-        .eq('user_id', userId); // Forzar el tipo aquí
+        .eq('user_id', userId);
 
     if (error) {
-        console.error('Error fetching data:', error);
-        return []; // Maneja el error de manera apropiada
+        console.error('Error al obtener los datos:', error);
+        return [];
     }
 
-    return data;
+    return data || [];
 });
 </script>
 
 <template>
-    <section class="pt-24">
-        <!--Titulo-->
+    <section class="min-h-[70vh] md:min-h-[90vh] grid place-content-left px-4 pt-8">
+        <!-- Título -->
         <article class="container">
             <h1 class="text-2xl font-bold text-white">Dashboard</h1>
         </article>
 
-        <!--Acortador-->
-        <article class="container mt-10">
+        <!-- Acortador -->
+        <article class="container">
             <div class="card">
-                <LinkForm @created="refresh"/>
+                <LinkForm @created="refresh" />
             </div>
         </article>
 
-        <!--Lista Urls acortadas-->
-        <article class="container mt-10">
+        <!-- Lista de URLs acortadas -->
+        <article class="container mb-6 grid grid-cols-1 md:grid-cols-2 gap-x-4">
             <LinkItem
-                v-for="link in data"
+                v-for="link in links"
                 :key="link.id"
                 :link="{
                     shortkey: link.key,
                     longUrl: link.long_url || '',
                     id: link.id
                 }"
+                @deleted="refresh"
             />
         </article>
     </section>

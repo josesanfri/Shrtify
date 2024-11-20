@@ -50,7 +50,7 @@ onMounted(() => {
             <input class="input-primary" type="text" id="shortUrl" v-model="formURL.key"/>
         </section>
         <section class="w-full md:w-2/12">
-            <button type="submit" class="btn-primary py-3 mt-3 rounded-full font-bold w-full">Acortar</button>
+            <button type="submit" class="btn-primary py-3 mt-3 rounded-full font-bold w-full">Create</button>
         </section>
     </form>
 </template>
