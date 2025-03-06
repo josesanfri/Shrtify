@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import type { Database } from '~/database.types';
+import type { Database } from '~/types/database.types';
 import axios from 'axios';
 
 const params = useRoute().params;

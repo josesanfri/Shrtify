@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import type { Database } from '~/database.types';
+import type { Database } from '~/types/database.types';
 
 const {id} = useRoute().params;
 const supabase = useSupabaseClient<Database>();
