@@ -2,7 +2,10 @@
     <main>
         <Header/>
         <slot></slot>
+<<<<<<< HEAD
         <UNotifications />
+=======
+>>>>>>> e36d2c91c5e354aa0e9f0538b782229da2f9ddcb
         <Footer/>
     </main>
 </template>
