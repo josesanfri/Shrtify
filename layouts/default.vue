@@ -2,6 +2,7 @@
     <main>
         <Header/>
         <slot></slot>
+        <UNotifications />
         <Footer/>
     </main>
 </template>

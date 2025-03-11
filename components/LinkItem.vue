@@ -2,6 +2,7 @@
 import type { Database } from '~/types/database.types';
 
 const emit = defineEmits(["deleted"]);
+const toast = useToast();
 
 const props = defineProps<{
     link: {
@@ -16,6 +17,10 @@ const supabase = useSupabaseClient<Database>();
 
 const handleCopy = () => {
     navigator.clipboard.writeText(`${config.public.appUrl}/${props.link.shortkey}`);
+    toast.add({
+        title: "Copied",
+        description: "The link has been copied to your clipboard",
+    });
 };
 
 const handleDelete = async () => {
@@ -31,6 +36,10 @@ const handleDelete = async () => {
         }
 
         emit("deleted", props.link.id);
+        toast.add({
+            title: "Deleted",
+            description: "The link has been deleted successfully",
+        });
     } catch (error) {
         console.error(error);
     }

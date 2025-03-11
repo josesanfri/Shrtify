@@ -4,6 +4,7 @@ import type { Database } from '~/types/database.types';
 
 const supabase = useSupabaseClient<Database>();
 const user = useSupabaseUser();
+const toast = useToast();
 
 const formURL = reactive({
     long_url: "",
@@ -22,7 +23,10 @@ const handleLinkForm = async () => {
 
         createShortKey();
         formURL.long_url = "";
-        alert("link creado con exito")
+        toast.add({
+            title: "Link created",
+            description: "The link has been created successfully",
+        })
 
         emit("created", 1)
     } catch (error) {

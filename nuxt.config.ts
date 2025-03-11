@@ -1,6 +1,6 @@
 export default defineNuxtConfig({
     compatibilityDate: "2024-04-03",
-    devtools: { enabled: false },
+    devtools: { enabled: true },
     css: ["~/assets/style.sass"],
 
     app: {
@@ -34,7 +34,13 @@ export default defineNuxtConfig({
         },
     },
 
-    modules: ["@nuxtjs/tailwindcss", "@nuxtjs/supabase", "nuxt-lucide-icons"],
+    modules: [
+      "@nuxtjs/supabase",
+      "nuxt-lucide-icons",
+      "@nuxt/ui",
+      "@nuxtjs/tailwindcss",
+      "@vueuse/nuxt",
+    ],
 
     supabase: {
         url: process.env.SUPABASE_URL,

@@ -28,7 +28,7 @@ const logout = async () => {
 					<a href="https://github.com/josesanfri/Shrtify" aria-label="GitHub Repository" target="_blank">
 						<LucideGithub class="h-6 w-6 rounded-full"/>
 					</a>
-					<NuxtLink v-if="!user" to="/auth" class="btn-primary flex flex-row items-center gap-2">
+					<NuxtLink v-if="!user" to="/auth.vue" class="btn-primary flex flex-row items-center gap-2">
 						<LucideArrowRight class="w-4 h-4" />
 						Get Started
 					</NuxtLink>
